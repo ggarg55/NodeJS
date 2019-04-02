@@ -1,9 +1,11 @@
 //Module : Logger - Log Messages
+const EventEmitter = require("events");
 
-var url = "https://jsonplaceholder.typicode.com/posts"
+class Logger extends EventEmitter {
+    log(message) {
+        this.emit("messageLogged", message);
+        console.log("Message Logged: " + message);
+    }
+}
 
-function log(message) {
-    console.log(message);
-} 
-
-module.exports = log;
+module.exports = Logger;
